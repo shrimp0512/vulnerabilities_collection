@@ -9,8 +9,8 @@ import json
 def nvd():
     # get current time
     now = datetime.datetime.now()
-    pubStartDate = datetime.datetime(now.year,now.month,now.day,now.hour-12,0,0,0)
-    pubEndDate = datetime.datetime(now.year,now.month,now.day,now.hour,0,0,0)
+    pubStartDate = datetime.datetime(now.year,now.month,now.day,now.hour-2,0,0,0)
+    pubEndDate = datetime.datetime(now.year,now.month,now.day,now.hour-1,0,0,0)
 
     # change str
     pubStartDate_Str = pubStartDate.strftime('%Y-%m-%dT%H:00:00.000') + '%2B09:00'
@@ -97,7 +97,8 @@ def nvd():
             send_graylog(vulnerabilities)
             
 def send_graylog(vulnerabilities):
-    url = "http://172.17.0.1:12201/gelf"
+    #The URL should be in your enviroment
+    url = "http://xxx.xx.x.x:xxxxx/gelf"
     headers = {
         "Content-Type":"application/json"
     }
